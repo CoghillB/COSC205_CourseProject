@@ -1,0 +1,31 @@
+/public: Contains static files like CSS, JavaScript (that aren't bundled), and images.
+
+    /css: Stylesheets.
+    /js: Any standalone JavaScript files.
+    /images: Images used across the site.
+    /src: Main source directory for front-end code.
+
+/components: Reusable components.
+
+    /common: Common reusable components (buttons, inputs, etc.).
+    /layout: Layout components (headers, footers).
+    /pages: Components specific to different pages.
+    /hooks: Custom React hooks. (optional)
+    /services: API calls and other service-related logic.
+    /contexts: Context API for global state management.
+    /utils: Utility functions.
+    /routes: Defines the routes for the app.
+    App.js: Main app component.
+
+/server: Back-end code.
+
+    /controllers: Handle the request logic.
+    /models: Define the database schema/models.
+    /routes: API endpoints.
+    server.js: Entry point for the server.
+
+.env: Environment variables.
+.gitignore: Specifies which files and directories Git should ignore.
+package.json: Manages dependencies and scripts.
+README.md: Documentation.
+webpack.config.js: Configuration for the module bundler (if using Webpack).
