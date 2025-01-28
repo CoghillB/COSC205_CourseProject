@@ -77,7 +77,7 @@ app.post('/register', async (req, res) => {
     const { f_name, l_name, email, password } = req.body;
     console.log(req.body);
     try {
-        const response = await createUser(f_name, l_name, email, password);
+        const response = await createMember(f_name, l_name, email, password);
 
         if (response.ok) {
             res.status(201).send("Account created");
