@@ -21,8 +21,10 @@ const pool = mysql.createPool({
     database: 'TravelGuide'
 });
 
+
 //Maps requests
 const mapClient = new Client({});
+
 
 //Incoming requests
 
