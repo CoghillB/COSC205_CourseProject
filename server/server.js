@@ -38,8 +38,10 @@ async function createMember(f_name, l_name, email, password) {
     }
 }
 
+
 //Maps requests
 const mapClient = new Client({});
+
 
 //Incoming requests
 
