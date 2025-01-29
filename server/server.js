@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const axios = require('axios');
 const path = require('path');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
@@ -18,7 +19,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: 'TravelGuide' //? 'Members' ?
+    database: 'travel_database'
 });
 
 async function getMembers() {
@@ -42,6 +43,10 @@ async function createMember(f_name, l_name, email, password) {
 //Maps requests
 const mapClient = new Client({});
 
+async function nearbySearch() {
+
+}
+
 
 //Incoming requests
 
@@ -54,7 +59,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'userpage.html'));
 });
 
-// app.post('/login')
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -74,7 +78,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// app.post('/register')
 app.post('/register', async (req, res) => {
     const { f_name, l_name, email, password } = req.body;
     console.log(req.body);
@@ -92,6 +95,50 @@ app.post('/register', async (req, res) => {
     }
 });
 
+app.post('/searchNearby', async (req, res) => {
+    const { lat, long, radius, type } = req.body;
+    if (!lat || !long || !radius) return res.status(400).send("Please provide radius and type.");
+
+    try {
+        const response = await mapClient.placesNearby({
+            params:{
+                location: `${lat},${long}`,
+                radius: radius,
+                type: type,
+                key: mapsKey
+            }
+        });
+
+        console.log(response.data);
+        res.status(200).send(response.data);
+
+    } catch (e) {
+        console.log(`Error in /searchNearby, ${e}`);
+        res.status(500).send("Error retrieving places");
+    }
+});
+
+app.post('/getPlaceById', async (req, res) => {
+    const { id } = req.body;
+    if (!id) return res.status(400).send("ID must not be null");
+
+    try {
+        const response = await mapClient.placeDetails({
+            params:{
+                place_id: id,
+                fields: ["name", "formatted_address", "rating", "photos"],
+                key: mapsKey
+            }
+        });
+
+        console.log(response.data);
+        res.status(200).send(response.data);
+
+    } catch (e) {
+        console.log(`Error in /getPlaceById, ${e}`);
+    }
+});
+
 async function startServer() {
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`);
@@ -99,3 +146,21 @@ async function startServer() {
 }
 
 startServer();
+
+//This is an axios test method that calls an endpoint
+// (async () => {
+//     try {
+//         const response = await axios.post(`http://localhost:${port}/searchNearby`, {
+//             lat: 37.7749,
+//             long: -122.4194,
+//             radius: 5000,
+//             type: "restaurant"
+//         }, {
+//             headers: { "Content-Type": "application/json" }
+//         });
+//
+//         console.log("Test Response:", response.data);
+//     } catch (error) {
+//         console.error("Error testing endpoint:", error.message);
+//     }
+// })();
