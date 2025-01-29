@@ -18,7 +18,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: 'TravelGuide' //? 'Members' ?
+    database: 'travel_database'
 });
 
 async function getMembers() {
@@ -38,6 +38,32 @@ async function createMember(f_name, l_name, email, password) {
     }
 }
 
+async function getEvents() {
+    const [rows] = await pool.query(`SELECT * FROM events`);
+    return rows;
+}
+
+async function getItineraries() {
+    const [rows] = await pool.query(`SELECT * FROM itineraries`);
+    return rows;
+}
+
+async function getMemberItinerary(memberEmail) {
+    const [rows] = await pool.query(`SELECT * FROM member_itinerary WHERE email = ?`, [memberEmail]);
+    return rows;
+}
+
+//some sort of createEvent function
+//async function createEvent(memberEmail, itin_ID, start_time, place_ID, cost) {
+// try {
+//const checkItineraryQuery = `
+//SELECT * FROM member_itinerary
+//WHERE email = ? AND itin_ID = ?`
+//
+//const insertEventQuery = `
+//INSERT INTO events (itin_ID, start_time, place_ID, cost)
+//VALUES (?, ?, ?, ?)`;
+//??????????
 
 //Maps requests
 const mapClient = new Client({});
@@ -79,7 +105,7 @@ app.post('/register', async (req, res) => {
     const { f_name, l_name, email, password } = req.body;
     console.log(req.body);
     try {
-        const response = await createUser(f_name, l_name, email, password);
+        const response = await createMember(f_name, l_name, email, password);
 
         if (response.ok) {
             res.status(201).send("Account created");
