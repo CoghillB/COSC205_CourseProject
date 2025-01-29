@@ -1,12 +1,7 @@
-// jQuery code for user login page
-
 $(document).ready( () => {
-
-    //TODO: Add event listener for login button
     $('#login').on('submit', async (event) => {
         event.preventDefault();
-
-        let data = {
+        const data = {
             username: $('#username').val(),
             password: $('#password').val()
         }
@@ -17,12 +12,11 @@ $(document).ready( () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/login', { //TODO: Change to correct URL
+            // TODO: Change to the correct URL once the page is up
+            const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json' // TODO: Change to correct content type
-                },
-                body: JSON.stringify(data)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
             });
 
             if (!response.ok) {
@@ -32,13 +26,14 @@ $(document).ready( () => {
 
             const result = await response.json();
 
-            if (result.ok) {
-                window.location.href = '/HomePage.html'; //TODO: Change to correct URL
+            if (result.success) {
+                window.sessionStorage.setItem("user", data.username);
+                window.location.href = '/src/ApeAbroad/HomePage.html'; // Redirect to the user page on successful login
             } else {
-                alert('Invalid username or password');
+                alert(result.message || 'Login failed. Please try again.');
             }
         } catch (e) {
-            console.error(e);
+            console.log(e);
         }
-    });
+    })
 });
