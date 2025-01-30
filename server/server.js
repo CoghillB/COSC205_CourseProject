@@ -43,11 +43,6 @@ async function createMember(f_name, l_name, email, password) {
 //Maps requests
 const mapClient = new Client({});
 
-async function nearbySearch() {
-
-}
-
-
 //Incoming requests
 
 app.use(cors());
@@ -139,6 +134,10 @@ app.post('/getPlaceById', async (req, res) => {
     }
 });
 
+app.get('/ping', async(req, res) => {
+    res.json({ message: "Server is up!" });
+});
+
 async function startServer() {
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`);
@@ -147,20 +146,46 @@ async function startServer() {
 
 startServer();
 
-//This is an axios test method that calls an endpoint
+//Tests
+
+//Test server is running and responds to simple requests
+// (async () => {
+//     try {
+//         const response = await axios.get(`http://localhost:${port}/ping`);
+//         console.log("Test response:", response.data)
+//     } catch (e) {
+//         console.error("Error testing endpoint:", e.message);
+//     }
+// })();
+//Search Nearby should return restaurants near Okanagan College Kelowna Campus
 // (async () => {
 //     try {
 //         const response = await axios.post(`http://localhost:${port}/searchNearby`, {
-//             lat: 37.7749,
-//             long: -122.4194,
-//             radius: 5000,
+//             lat: 49.9556,
+//             long: -119.3889,
+//             radius: 500,
 //             type: "restaurant"
 //         }, {
 //             headers: { "Content-Type": "application/json" }
 //         });
 //
 //         console.log("Test Response:", response.data);
-//     } catch (error) {
-//         console.error("Error testing endpoint:", error.message);
+//     } catch (e) {
+//         console.error("Error testing endpoint:", e.message);
+//     }
+// })();
+//
+// //Get Place By ID should return Okanagan College Kelowna Campus
+// (async () => {
+//     try {
+//         const response = await axios.post(`http://localhost:${port}/getPlaceById`, {
+//             id: "ChIJicy6skSLfVMRXJhpeAYlmPg"
+//         }, {
+//             headers: { "Content-Type": "application/json" }
+//         });
+//
+//         console.log("Test Response:", response.data);
+//     } catch (e) {
+//         console.error("Error testing endpoint:", e.message);
 //     }
 // })();
