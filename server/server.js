@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const axios = require('axios');
 const path = require('path');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
@@ -68,7 +69,6 @@ async function getMemberItinerary(memberEmail) {
 //Maps requests
 const mapClient = new Client({});
 
-
 //Incoming requests
 
 app.use(cors());
@@ -80,7 +80,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'userpage.html'));
 });
 
-// app.post('/login')
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -100,7 +99,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// app.post('/register')
 app.post('/register', async (req, res) => {
     const { f_name, l_name, email, password } = req.body;
     console.log(req.body);
@@ -118,6 +116,54 @@ app.post('/register', async (req, res) => {
     }
 });
 
+app.post('/searchNearby', async (req, res) => {
+    const { lat, long, radius, type } = req.body;
+    if (!lat || !long || !radius) return res.status(400).send("Please provide radius and type.");
+
+    try {
+        const response = await mapClient.placesNearby({
+            params:{
+                location: `${lat},${long}`,
+                radius: radius,
+                type: type,
+                key: mapsKey
+            }
+        });
+
+        console.log(response.data);
+        res.status(200).send(response.data);
+
+    } catch (e) {
+        console.log(`Error in /searchNearby, ${e}`);
+        res.status(500).send("Error retrieving places");
+    }
+});
+
+app.post('/getPlaceById', async (req, res) => {
+    const { id } = req.body;
+    if (!id) return res.status(400).send("ID must not be null");
+
+    try {
+        const response = await mapClient.placeDetails({
+            params:{
+                place_id: id,
+                fields: ["name", "formatted_address", "rating", "photos"],
+                key: mapsKey
+            }
+        });
+
+        console.log(response.data);
+        res.status(200).send(response.data);
+
+    } catch (e) {
+        console.log(`Error in /getPlaceById, ${e}`);
+    }
+});
+
+app.get('/ping', async(req, res) => {
+    res.json({ message: "Server is up!" });
+});
+
 async function startServer() {
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`);
@@ -125,3 +171,47 @@ async function startServer() {
 }
 
 startServer();
+
+//Tests
+
+//Test server is running and responds to simple requests
+// (async () => {
+//     try {
+//         const response = await axios.get(`http://localhost:${port}/ping`);
+//         console.log("Test response:", response.data)
+//     } catch (e) {
+//         console.error("Error testing endpoint:", e.message);
+//     }
+// })();
+//Search Nearby should return restaurants near Okanagan College Kelowna Campus
+// (async () => {
+//     try {
+//         const response = await axios.post(`http://localhost:${port}/searchNearby`, {
+//             lat: 49.9556,
+//             long: -119.3889,
+//             radius: 500,
+//             type: "restaurant"
+//         }, {
+//             headers: { "Content-Type": "application/json" }
+//         });
+//
+//         console.log("Test Response:", response.data);
+//     } catch (e) {
+//         console.error("Error testing endpoint:", e.message);
+//     }
+// })();
+//
+// //Get Place By ID should return Okanagan College Kelowna Campus
+// (async () => {
+//     try {
+//         const response = await axios.post(`http://localhost:${port}/getPlaceById`, {
+//             id: "ChIJicy6skSLfVMRXJhpeAYlmPg"
+//         }, {
+//             headers: { "Content-Type": "application/json" }
+//         });
+//
+//         console.log("Test Response:", response.data);
+//     } catch (e) {
+//         console.error("Error testing endpoint:", e.message);
+//     }
+// })();
