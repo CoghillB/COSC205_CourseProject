@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../CSS/HomePage.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Find good stock photos for the background as well as find a good color pallete to base
+      website around -->
+
+
+    <!--Create a NavBar with a drop down menu with options to
+    sign in, create account, and contact us (same page)
+    NavBAr should stick to the top-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <span class="navbar-brand">Welcome to Ape Abroad</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Create Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Stock Photo With Buttons (Gettin Started) and (About Us)
+     This should take up the entire page dynamically,
+     except you should be able to scroll down through the rest of the conent-->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="" alt="Stock Photo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-primary">Get Started</button>
+                <button type="button" class="btn btn-primary">About Us</button>
+            </div>
+        </div>
+
+    <!-- About Us, Purpose of Company Information
+     Another Stock Image-->
+        <div>
+            <h1>About Us</h1>
+            <p>Here at Ape Abroad we strive to provide the best possible service for our customers. We understand that
+                traveling can be a stressful and expensive experience, our goal is to relieve you as much as possible. We offer a
+                variety of ways to help you plan your trip, and we are always here to help you with any questions you
+                may have. Our goal is to make your trip as enjoyable and inexpensive as possible, so you can focus on the important things.</p>
+        </div>
+
+    <!-- Client Stories A carousel of reviews  -->
+
+
+    <!-- Footer Containing Contact us, Socials, Copyright ect.-->
+        <footer class="bg-dark text-light mt-5 pt-4">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Contact Us Section -->
+                    <div class="col-md-4">
+                        <h5>Contact Us</h5>
+                        <ul class="list-unstyled">
+                            <li>Email: <a href="#">contact@apeabroad.com</a></li>
+                            <li>Phone: +1 234 567 890</a></li>
+                            <li>Address: 123 Ape Abroad St, Jungle City</li>
+                        </ul>
+                    </div>
+        <!-- Socials Section -->
+
+                <div class="text-center mt-4">
+                    <p>&copy; 2025 Ape Abroad. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../JavaScript/HomePage.js"></script>
+</body>
+</html>
