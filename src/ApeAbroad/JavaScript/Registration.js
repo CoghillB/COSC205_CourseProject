@@ -2,10 +2,10 @@ $(document).ready( () => {
     $('#register').on('submit', async (event) => {
         event.preventDefault();
         const data = {
-            username: $('#username').val(),
+            firstName: $('#fName').val(),
+            lastName: $('#lName').val(),
+            username: $('#email').val(),
             password: $('#password').val(),
-            firstName: $('#firstName').val(),
-            lastName: $('#lastName').val()
         }
 
         if (!data.username || !data.password || !data.firstName || !data.lastName) {
