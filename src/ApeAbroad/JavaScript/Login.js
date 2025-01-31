@@ -1,13 +1,13 @@
-$(document).ready( () => {
-    $('#login').on('submit', async (event) => {
+$(document).ready(() => {
+    $('#loginForm').on('submit', async (event) => {
         event.preventDefault();
         const data = {
-            username: $('#username').val(),
+            email: $('#email').val(),
             password: $('#password').val()
         }
 
-        if (!data.username || !data.password) {
-            alert('Please enter a username and password');
+        if (!data.email || !data.password) {
+            alert('Please enter a valid username and password');
             return;
         }
 
@@ -15,14 +15,14 @@ $(document).ready( () => {
             // TODO: Change to the correct URL once the page is up
             const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data),
             });
 
-            if (!response.ok) {
-                const errorText = await response.text(); // Catch response body if any
-                throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
-            }
+            // if (!response.ok) {
+            //     const errorText = await response.text(); // Catch response body if any
+            //     throw new Error(`HTTP error! status: ${response.status}`);
+            // }
 
             const result = await response.json();
 
