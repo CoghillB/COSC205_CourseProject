@@ -86,7 +86,6 @@ app.post('/login', async (req, res) => {
     try {
         const query = `SELECT * FROM members WHERE email = ? AND password = SHA1(?)`;
         const [rows] = await pool.query(query, [email, password]);
-        console.log(rows);
 
         if (rows.length > 0) {
             res.send({ success: true, message: 'Login successful!' });
@@ -105,7 +104,7 @@ app.post('/register', async (req, res) => {
     try {
         const response = await createMember(f_name, l_name, email, password);
 
-        if (response.ok) {
+        if (response.affectedRows === 1) {
             res.status(201).send("Account created");
         } else {
             res.status(400).send("error");
