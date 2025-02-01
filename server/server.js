@@ -72,7 +72,7 @@ const mapClient = new Client({});
 //Incoming requests
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -86,6 +86,7 @@ app.post('/login', async (req, res) => {
     try {
         const query = `SELECT * FROM members WHERE email = ? AND password = SHA1(?)`;
         const [rows] = await pool.query(query, [email, password]);
+
 
         if (rows.length > 0) {
             res.send({ success: true, message: 'Login successful!' });
