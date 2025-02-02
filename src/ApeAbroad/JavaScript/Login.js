@@ -28,7 +28,7 @@ $(document).ready(() => {
 
             if (result.success) {
                 window.sessionStorage.setItem("user", data.username);
-                window.location.href = '/src/ApeAbroad/HomePage.html'; // Redirect to the user page on successful login
+                window.location.href = '../HTML/HomePage.html'; // Redirect to the user page on successful login
             } else {
                 alert(result.message || 'Login failed. Please try again.');
             }

@@ -25,7 +25,7 @@ $(document).ready( () => {
 
             if (response.ok) {
                 alert("Account created successfully!");
-                window.location.href = "/src/ApeAbroad/HTML/HomePage.html";
+                window.location.href = "../HTML/HomePage.html";
             } else {
                 alert("A problem occurred and your account was not created.");
             }
