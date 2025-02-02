@@ -10,17 +10,6 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-///////////////
-
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: 'travel_database'
-});
-
-////////////////
-
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
@@ -33,8 +22,8 @@ app.listen(port, () => {
 });
 
 
-//Tests
-
+// //Tests
+//
 // //Test server is running and responds to simple requests
 // (async () => {
 //     try {
@@ -77,8 +66,8 @@ app.listen(port, () => {
 //         console.error("Error testing endpoint:", e.message);
 //     }
 // })();
-
-//Test Login with Debug Dan, debug@debug.com, password DebugPlaintext
+//
+// //Test Login with Debug Dan, debug@debug.com, password DebugPlaintext
 // (async () => {
 //     try {
 //         const response = await axios.post(`http://localhost:${port}/login`, {
@@ -96,8 +85,8 @@ app.listen(port, () => {
 //         console.error("Error testing endpoint:", e.message);
 //     }
 // })();
-
-//Test Registration with Temporary Tom, then remove from database
+//
+// //Test Registration with Temporary Tom, then remove from database
 // (async () => {
 //     try {
 //         let tempExists =
@@ -144,6 +133,6 @@ app.listen(port, () => {
 //         console.log(`Error during registration test:`, e.message);
 //     }
 // })();
-
-//Test Event creation, then remove it
+//
+// //Test Event creation, then remove it
 
