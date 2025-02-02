@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Search</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../CSS/Search.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
 
-  </head>
-  <body>
-    <form>
-      <input type="search">
-      <input type="submit" value="Search">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <span class="navbar-brand">Welcome to Ape Abroad</span>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="Login.html" id="login">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="HomePage.html#about-us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="HomePage.html#contact-us">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- map container -->
+<div class="background-image">
+  <div class="map-container">
+
+    <!-- Search Bar -->
+    <form class="search-form">
+      <input type="search" class="search-input" placeholder="Enter a location...">
+      <button type="submit" class="search-button">Search</button>
     </form>
-    <div id="map" style="height: 400px; width: 600px; border: 1px solid black"></div>
 
-    <script src="../JavaScript/Search.js"></script>
-  </body>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../JavaScript/Search.js"></script>
+</body>
 </html>
