@@ -39,6 +39,16 @@ async function createMember(f_name, l_name, email, password) {
     }
 }
 
+async function removeMember(email) {
+    const query = `DELETE FROM members WHERE email = ?`;
+    const [rows] = await pool.query(query, [email]);
+    if (rows.affectedRows === 0) {
+        return Promise.reject("No changes were made.")
+    } else {
+        return Promise.resolve("The user has been removed.");
+    }
+}
+
 async function getEvents() {
     const [rows] = await pool.query(`SELECT * FROM events`);
     return rows;
@@ -49,22 +59,41 @@ async function getItineraries() {
     return rows;
 }
 
-async function getMemberItinerary(memberEmail) {
-    const [rows] = await pool.query(`SELECT * FROM member_itinerary WHERE email = ?`, [memberEmail]);
+async function getMemberItinerary(email) {
+    const [rows] = await pool.query(`SELECT * FROM member_itinerary WHERE email = ?`, [email]);
     return rows;
 }
 
-//some sort of createEvent function
-//async function createEvent(memberEmail, itin_ID, start_time, place_ID, cost) {
-// try {
-//const checkItineraryQuery = `
-//SELECT * FROM member_itinerary
-//WHERE email = ? AND itin_ID = ?`
-//
-//const insertEventQuery = `
-//INSERT INTO events (itin_ID, start_time, place_ID, cost)
-//VALUES (?, ?, ?, ?)`;
-//??????????
+async function addEvent(memberEmail, itin_ID, start_time, place_ID, cost) {
+    const checkItineraryQuery = ``;
+
+
+    // try {
+    //const checkItineraryQuery = `
+    //SELECT * FROM member_itinerary
+    //WHERE email = ? AND itin_ID = ?`
+    //
+    //const insertEventQuery = `
+    //INSERT INTO events (itin_ID, start_time, place_ID, cost)
+    //VALUES (?, ?, ?, ?)`;
+}
+
+async function removeEvent() {
+
+}
+
+async function createItinerary(memberEmail) {
+
+}
+
+async function removeItinerary() {
+    //remove all events linked to this, then the itinerary
+}
+
+
+
+
+
 
 //Maps requests
 const mapClient = new Client({});
@@ -78,6 +107,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'userpage.html'));
+});
+
+app.get('/getApiKey', (req, res) => {
+    console.log("issuing API key");
+    res.json({
+        apiKey: process.env.MAPS_API
+    });
 });
 
 app.post('/login', async (req, res) => {
@@ -182,6 +218,7 @@ startServer();
 //         console.error("Error testing endpoint:", e.message);
 //     }
 // })();
+
 //Search Nearby should return restaurants near Okanagan College Kelowna Campus
 // (async () => {
 //     try {
@@ -199,7 +236,7 @@ startServer();
 //         console.error("Error testing endpoint:", e.message);
 //     }
 // })();
-//
+
 // //Get Place By ID should return Okanagan College Kelowna Campus
 // (async () => {
 //     try {
@@ -214,3 +251,72 @@ startServer();
 //         console.error("Error testing endpoint:", e.message);
 //     }
 // })();
+
+//Test Login with Debug Dan, debug@debug.com, password DebugPlaintext
+// (async () => {
+//     try {
+//         const response = await axios.post(`http://localhost:${port}/login`, {
+//             email: "debug@debug.com",
+//             password: "DebugPlaintext"
+//         });
+//
+//         if (response.data.success) {
+//             console.log("Login test with debug account was successful!");
+//         } else {
+//             console.log(`Login test with debug account failed, ${response.data.message}`);
+//         }
+//
+//     } catch (e) {
+//         console.error("Error testing endpoint:", e.message);
+//     }
+// })();
+
+//Test Registration with Temporary Tom, then remove from database
+// (async () => {
+//     try {
+//         let tempExists =
+//             false;
+//         let email = "temporaryTom@invalid";
+//         const membersStart = await getMembers();
+//
+//         for (let member of membersStart) {
+//             if (member.email === email) {
+//                 throw Error("Temporary email already exists in database.");
+//             }
+//         }
+//
+//         const response = await axios.post(`http://localhost:${port}/register`, {
+//             f_name: "Tom",
+//             l_name: "Temporary",
+//             email: email,
+//             password: "letmein"
+//         });
+//
+//         const membersMiddle = await getMembers();
+//
+//         for (let member of membersMiddle) {
+//             if (member.email === email) {
+//                 tempExists = true;
+//                 break;
+//             }
+//         }
+//
+//         if (!tempExists) {
+//             throw Error("Temp account creation failed");
+//         }
+//
+//         const query = `DELETE FROM members WHERE email = ?;`;
+//         const [rows] = await pool.query(query, [email]);
+//
+//         if (rows.affectedRows !== 1) {
+//             throw Error("Error in removal of temporary account");
+//         } else {
+//             console.log("Successful account creation/removal test!");
+//         }
+//
+//     } catch (e) {
+//         console.log(`Error during registration test:`, e.message);
+//     }
+// })();
+
+//Test Event creation, then remove it
