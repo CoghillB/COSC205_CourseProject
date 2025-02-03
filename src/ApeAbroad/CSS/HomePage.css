@@ -12,6 +12,7 @@ section {
     margin: 0;
     padding: 0;
 }
+
 .about-section {
     background-size: cover;
     background-position: center;
@@ -19,6 +20,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
 }
 
 .about-section .container {
@@ -27,14 +29,16 @@ section {
     border-radius: 10px;
     color: white;
 }
+
 /*  Carousel Control  */
 .carousel-control-prev,
 .carousel-control-next {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 20%;
-    opacity: 1;
+    opacity: 0;
     height: 50%;
 }
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: brightness(0) invert(1);

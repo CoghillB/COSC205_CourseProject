@@ -24,7 +24,7 @@ $(document).ready(() => {
 
             if (response.ok) {
                 alert("Account created successfully!");
-                window.location.href = "../HTML/HomePage.html";
+                window.location.href = "../HTML/Login.html";
             } else {
                 alert("A problem occurred and your account was not created.");
             }
@@ -37,9 +37,9 @@ $(document).ready(() => {
 
 
 // Test Cases
-
+//
 // Test 1 - Missing fields
-
+//
 // test('Form submission fails with missing fields', async () => {
 //     Set up the DOM with a mock form
 //     document.body.innerHTML = `
@@ -62,8 +62,8 @@ $(document).ready(() => {
 //     expect(window.alert).toHaveBeenCalledWith('Please enter a username, password, first name, and last name');
 //     expect(mockFetch).not.toHaveBeenCalled(); // Simulates that no API call is made
 // });
-
-
+//
+//
 // Test 2 - Successful Registration
 //
 //     test('Form submission succeeds with valid input', async () => {
