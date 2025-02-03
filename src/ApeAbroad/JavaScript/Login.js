@@ -1,37 +1,41 @@
 $(document).ready(() => {
+    // Attach a submit event handler to the login form
     $('#loginForm').on('submit', async (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Collect user input values for email and password
         const data = {
             email: $('#email').val(),
             password: $('#password').val()
         }
 
+        // Validate if both email and password are provided
         if (!data.email || !data.password) {
             alert('Please enter a valid username and password');
-            return;
+            return; // Exit if validation fails
         }
 
         try {
+            // Send a POST request to the server with the login data
             const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data),
+                headers: {'Content-Type': 'application/json'}, // Set headers to indicate JSON payload
+                body: JSON.stringify(data), // Convert the data object into a JSON string
             });
 
-            // if (!response.ok) {
-            //     const errorText = await response.text(); // Catch response body if any
-            //     throw new Error(`HTTP error! status: ${response.status}`);
-            // }
-
+            // Parse the response body as JSON
             const result = await response.json();
 
+            // Handle login success
             if (result.success) {
-                window.sessionStorage.setItem("user", data.username);
-                window.location.href = '../HTML/Search.html'; // Redirect to the user page on successful login
+                window.sessionStorage.setItem("user", data.username); // Store user data in session storage
+                window.location.href = '../HTML/Search.html'; // Redirect to the search page
             } else {
+                // Alert the user with a failure message
                 alert(result.message || 'Login failed. Please try again.');
             }
         } catch (e) {
+            // Log any errors that occur during the request
             console.log(e);
         }
     })
