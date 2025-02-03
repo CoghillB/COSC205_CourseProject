@@ -1,15 +1,13 @@
 $(document).ready(function () {
     // Smooth scrolling for navigation links
-    $('.section').on('click', 'a', function (event) {
-        if (this.hash !== "") {
-            event.preventDefault(); // Prevent default anchor click behavior
-            const hash = this.hash; // Store hash
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 800, function () {
-                window.location.hash = hash; // Add hash to URL when done scrolling
-            });
-        }
+
+    $("nav a section").click(function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        const targetSection = $(this).attr("href"); // Get the target section's ID
+        $("html, body").animate({
+            scrollTop: $(targetSection).offset().top // Scroll to the target section
+        }, 800); // Animation duration
+
     });
 
     // Update active navigation link based on scroll position

@@ -1,3 +1,5 @@
+let map;
+
 function initMap() {
 
     let lat, lng;
@@ -9,15 +11,48 @@ function initMap() {
         lng = window.userLocation.lng;
     }
 
-    const map = new google.maps.Map(document.getElementById('map'), {
-
+    map = new google.maps.Map(document.getElementById('map'), {
         center: { lat, lng },
         zoom: 14,
     });
+
+    console.log("Map initialized");
 }
 
 $(document).ready(() => {
+    $('#searchButton').on('click', async (event) => {
+        console.log("clicked");
+        event.preventDefault();
+        const search = $('#search').val();
 
+        try {
+            const response = await fetch('http://localhost:3000/textSearch', {
+                method: 'POST', // HTTP method
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ str: search }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch geocoding data');
+            }
+
+            const data = await response.json();
+            console.log(data);
+            if (data.results && data.results.length > 0) {
+                const location = data.results[0].geometry.location;
+                const newCenter = { lat: location.lat, lng: location.lng };
+
+                if (map) {
+                    map.setCenter(newCenter);
+                } else {
+                    console.error('Map is not initialized.');
+                }
+            } else {
+                console.error('No results found for the search term.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
 });
 
 async function getKey() {

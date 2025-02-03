@@ -98,6 +98,25 @@ router.post('/getPlaceById', async (req, res) => {
     }
 });
 
+router.post('/textSearch', async (req, res) => {
+    const { str } = req.body;
+    console.log(str);
+    if (!str) return res.status(400).send("Please provide str");
+
+    try {
+        const response = await mapClient.textSearch({
+            params:{
+                query: str,
+                key: mapsKey
+            }
+        });
+
+        res.status(200).send(response.data);
+    } catch (e) {
+        console.log(`Error in /textSearch, ${e}`);
+    }
+});
+
 router.get('/ping', async(req, res) => {
     res.json({ message: "Server is up!" });
 });
