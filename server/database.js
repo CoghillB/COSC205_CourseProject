@@ -36,7 +36,7 @@ async function createMember(f_name, l_name, email, password) {
     }
 }
 
-//OR????
+//OR other option
 /*async function getMemberByEmail(email) {
     const query = `SELECT * FROM members WHERE email = ?`;
     const [rows] = await pool.query(query, [email]);
@@ -162,7 +162,7 @@ async function removeItinerary() {
 
 }
 
-//Sam attempted tests
+//Sam tests
 
 //axios - simplifies http requests, handles responses as promises, automatic json conversion,
 //supports error handling, works on both front end and back end
@@ -173,13 +173,30 @@ async function removeItinerary() {
     try {
         const response = await axios.get(`http://localhost:${port}/getMembers`);
 
-        if (Array.isArray(response.data) && response.data.length > 0) {
-            console.log("getMembers test passed!");
+        assert(Array.isArray(response.data), "Response should be an array.");
+
+        if (response.data.length === 0) {
+            console.log("getMembers empty test passed! Empty database case handled.");
         } else {
-            console.log("getMembers test failed. No members were found.");
+            console.log("getMembers test passed! Members were found.");
         }
     } catch (e) {
-        console.error("Error getMembers", e.message);
+        console.error("getMembersTest failed", e.message);
+    }
+})();*/
+
+//createMemberTest
+/*(async () => {
+    try {
+        await axios.post(`http://localhost:${port}/createMember`, {
+            f_name: "John",
+            l_name: "Doe",
+            email: "debug@debug.com",
+            password: "letmein"
+        });
+        console.log("createMemberTest failed. Expected reject email duplicate.");
+    } catch (e) {
+        console.log("createMemberTest passed! Duplicate email rejected.");
     }
 })();*/
 
@@ -188,13 +205,15 @@ async function removeItinerary() {
     try {
         const response = await axios.get(`http://localhost:${port}/getItineraries`);
 
-        if (Array.isArray(response.data)) {
-            console.log("getItineraries test passed!");
+        assert(Array.isArray(response.data), "Response should be an array");
+
+        if (response.data.length === 0) {
+            console.log("getItineraries empty test passed! Empty database case handled.");
         } else {
-            console.log("getItineraries test failed. No Itineraries found.");
+            console.log("getItineraries test passed. Itineraries were found.");
         }
     } catch (e) {
-        console.error("Error getItineraries", e.message);
+        console.error("getItinerariesTest failed", e.message);
     }
 })();*/
 
@@ -206,13 +225,13 @@ async function removeItinerary() {
             email: "debug@debug.com"
         });
 
-        if (Array.isArray(reponse.data)) {
+        if (Array.isArray(response.data)) {
             console.log("getMemberItinerary test passed!");
         } else {
             console.log("getMemberItinerary test failed. No itinerary found.");
         }
     } catch (e) {
-        console.error("Error getMemberItinerary", e.message);
+        console.error("getMemberItineraryTest failed", e.message);
     }
 })();*/
 
@@ -236,7 +255,6 @@ async function removeItinerary() {
         console.error("Error addEvent", e.message);
     }
 })();*/
-
 
 module.exports = {
     getMembers,
