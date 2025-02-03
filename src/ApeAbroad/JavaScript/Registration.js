@@ -1,35 +1,43 @@
 $(document).ready(() => {
+    // Add event listener to the form with ID 'register' on form submission
     $('#register').on('submit', async (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Collect form data into an object
         const data = {
-            f_name: $('#fName').val(),
-            l_name: $('#lName').val(),
-            email: $('#email').val(),
-            password: $('#password').val(),
+            f_name: $('#fName').val(), // First name
+            l_name: $('#lName').val(), // Last name
+            email: $('#email').val(),  // Email address
+            password: $('#password').val(), // Password
         }
 
-        console.log(data);
+        console.log(data); // Log the collected data for debugging
 
+        // Check if any of the required fields are missing
         if (!data.email || !data.password || !data.f_name || !data.l_name) {
-            alert('Please enter a username, password, first name, and last name');
+            alert('Please enter a username, password, first name, and last name'); // Show an alert if validation fails
             return;
         }
 
         try {
+            // Send a POST request to the server to register the user
             const response = await fetch('http://localhost:3000/register', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data),
+                method: 'POST', // HTTP method
+                headers: {'Content-Type': 'application/json'}, // Set header to indicate JSON data
+                body: JSON.stringify(data), // Convert data to JSON string
             });
 
+            // Check if the server response indicates success
             if (response.ok) {
-                alert("Account created successfully!");
-                window.location.href = "../HTML/Login.html";
+                alert("Account created successfully!"); // Show success message
+                window.location.href = "../HTML/Login.html"; // Redirect to login page
             } else {
+                // Show an error message if the account creation fails
                 alert("A problem occurred and your account was not created.");
             }
 
         } catch (e) {
+            // Log any errors to the console
             console.log(e);
         }
     })
