@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Smooth scrolling for navigation links
-    $("nav a").click(function (e) {
+    $("nav a section").click(function (e) {
         e.preventDefault(); // Prevent default anchor behavior
         const targetSection = $(this).attr("href"); // Get the target section's ID
         $("html, body").animate({
