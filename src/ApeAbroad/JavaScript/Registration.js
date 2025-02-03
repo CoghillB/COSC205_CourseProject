@@ -14,8 +14,13 @@ $(document).ready(() => {
         console.log(data); // Log the collected data for debugging
 
         // Check if any of the required fields are missing
-        if (!data.email || !data.password || !data.f_name || !data.l_name) {
+        if (Object.values(data).some(field => !field)) {
             alert('Please enter a username, password, first name, and last name'); // Show an alert if validation fails
+            return;
+        }
+
+        if (Object.values(data.password).some(field => field.length < 8)) {
+            alert('Password must be at least 8 characters long');
             return;
         }
 
