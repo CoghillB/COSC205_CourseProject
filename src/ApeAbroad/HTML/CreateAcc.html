@@ -42,12 +42,12 @@
 
         <div class="mb-3">
             <label for="fName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="fName" placeholder="Enter your full name" required>
+            <input type="text" class="form-control" id="fName" placeholder="Enter your first name" required>
         </div>
 
         <div class="mb-3">
             <label for="lName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lName" placeholder="Enter your full name" required>
+            <input type="text" class="form-control" id="lName" placeholder="Enter your last name" required>
         </div>
 
         <div class="mb-3">
@@ -58,6 +58,7 @@
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+            <div id="passwordRule" class="form-text" style="color: red;"></div>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Create Account</button>
@@ -67,7 +68,19 @@
         <p>Already have an account? <a href="Login.html">Login here</a></p>
     </div>
 </div>
+<script>
+    document.getElementById('password').addEventListener('input', function () {
+        var password = this.value;
+        var regex = /^(?=.*[A-Z])(?=.*\d)/;
+        var warningText = document.getElementById('passwordRule');
 
+        if (!regex.test(password)) {
+            warningText.textContent = 'Password must contain at least one capital letter and one number.';
+        } else {
+            warningText.textContent = '';
+        }
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../JavaScript/Registration.js"></script>
 </body>
