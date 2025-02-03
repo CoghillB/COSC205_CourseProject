@@ -10,210 +10,223 @@
 </head>
 <body>
 
-    <!--Create a NavBar with a drop down menu with options to
-    sign in, create account, and contact us (same page)
-    NavBAr should stick to the top-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
+<!--Create a NavBar with a drop down menu with options to
+sign in, create account, and contact us (same page)
+NavBAr should stick to the top-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
 
-            <span class="navbar-brand">Welcome to Ape Abroad</span>
-            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <span class="navbar-brand">Welcome to Ape Abroad</span>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="Login.html" id="login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about-us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact-us">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Stock Photo With Buttons (Gettin Started) and (About Us)
+ This should take up the entire page dynamically,
+ except you should be able to scroll down through the rest of the conent-->
+<section class="main-section d-flex justify-content-center align-items-center"
+         style="background-image: url('../Media/coverPhoto1.jpg'); background-size: cover; height: 100vh;">
+    <div class="text-center">
+        <a href="Login.html" class="btn btn-primary btn-lg m-2">Get Started</a>
+        <a href="#about-us" class="btn btn-primary btn-lg m-2">About Us</a>
+
+    </div>
+</section>
+
+<!-- About Us, Purpose of Company Information
+ Another Stock Image-->
+<section id="about-us" class="about-section d-flex justify-content-center align-items-center"
+         style="background-image: url('../Media/coverPhoto2.jpg'); background-size: cover; height: 100vh;">
+    <div class="container text-center text-light bg-dark bg-opacity-75 p-5 rounded">
+        <h1 class="display-4 mb-4">About Us</h1>
+        <p class="lead">
+            At <strong>Ape Abroad</strong>, we are passionate about making travel simple, affordable, and unforgettable.
+            We understand that planning a trip can be overwhelming, which is why we’re here to take the stress out of
+            your journey. Our mission is to provide you with the tools and resources you need to explore the world with
+            confidence.
+        </p>
+        <p class="lead">
+            We specialize in helping travelers like you find the <strong>best discounts</strong> for flights,
+            accommodations, and activities. Whether you're looking for a cozy stay, exciting nearby attractions, or the
+            best local food spots, we’ve got you covered. Our platform features <strong>verified reviews and
+            ratings</strong> for just about anything you could ask for, so you can make informed decisions and enjoy
+            every moment of your trip.
+        </p>
+        <p class="lead">
+            Let us help you focus on what truly matters—creating memories that last a lifetime. Start your adventure
+            with <strong>Ape Abroad</strong> today!
+        </p>
+    </div>
+</section>
+
+<!-- Client Stories A carousel of reviews  -->
+<section class="client-stories-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Client Stories</h2>
+        <div id="clientCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Review 1 -->
+                <div class="carousel-item active">
+                    <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="lead">"Thanks to Ape Abroad, I saved a ton on my trip!
+                            They found me incredible discounts on flights and accommodations, which made my vacation so
+                            much more affordable.
+                            I couldn’t believe how easy it was to plan a budget-friendly trip without sacrificing
+                            quality."</p>
+                        <p class="text-muted">- Hugh Jackman</p>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="carousel-item">
+                    <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="lead">"Ape Abroad made my trip unforgettable by suggesting amazing nearby activities.
+                            From hiking trails to local tours, they had everything covered.
+                            I didn’t have to waste time researching—everything was just a click away!"</p>
+                        <p class="text-muted">- Jackie Chan</p>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="carousel-item">
+                    <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="lead">"The food recommendations from Ape Abroad were spot on!
+                            They guided me to the best local restaurants and hidden gems, and the reviews helped me
+                            choose the perfect spots.
+                            Every meal was a delicious adventure!"</p>
+                        <p class="text-muted">- Curious George</p>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="carousel-item">
+                    <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="lead">"I loved how Ape Abroad included reviews and ratings for everything—hotels,
+                            activities, and even restaurants. It made decision-making so much easier,
+                            and I felt confident knowing other travelers had great experiences too."</p>
+                        <p class="text-muted">- Caesar</p>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="carousel-item">
+                    <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="lead">"The customer support team at Ape Abroad is fantastic!
+                            They were quick to answer all my questions and even helped me adjust my itinerary last
+                            minute.
+                            It’s rare to find such reliable and friendly service!"</p>
+                        <p class="text-muted">- Mr YoYo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#clientCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
             </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#clientCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+<!-- Footer Containing Contact us, Socials, Copyright ect...-->
+<footer class="bg-dark text-light py-4" id="contact-us">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="Login.html" id="login">Login</a>
+            <div class="p-4" style="background-color: #848884; border-radius: 10px; max-width: 400px;">
+                <h5 class="fs-4">Contact Us</h5>
+                <ul class="list-unstyled fs-5">
+                    <li>Email: <a href="#" class="text-light">contact@apeabroad.com</a></li>
+                    <li>Phone: +1 234 567 890</li>
+                    <li>Address: 123 Ape Abroad St, Jungle City</li>
+                </ul>
+            </div>
+            <div class="p-4 text-end" style="background-color: #848884; border-radius: 10px; max-width: 400px;">
+                <h5 class="fs-4">Follow Us</h5>
+                <ul class="list-unstyled fs-5">
+                    <li>
+                        <a href="#" class="text-light">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about-us">About Us</a>
+                    <li>
+                        <a href="#" class="text-light">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact-us">Contact Us</a>
+                    <li>
+                        <a href="#" class="text-light">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
-
-
-    <!-- Stock Photo With Buttons (Gettin Started) and (About Us)
-     This should take up the entire page dynamically,
-     except you should be able to scroll down through the rest of the conent-->
-    <section class="main-section d-flex justify-content-center align-items-center" style="background-image: url('../Media/coverPhoto1.jpg'); background-size: cover; height: 100vh;">
-        <div class="text-center">
-            <a href="Login.html" class="btn btn-primary btn-lg m-2">Get Started</button>
-            <a href="#about-us" class="btn btn-primary btn-lg m-2">About Us</a>
-
+        <div class="text-center mt-4 fs-5">
+            <p>&copy; 2025 Ape Abroad. All rights reserved.</p>
         </div>
-    </section>
-
-    <!-- About Us, Purpose of Company Information
-     Another Stock Image-->
-    <section id="about-us" class="about-section d-flex justify-content-center align-items-center" style="background-image: url('../Media/coverPhoto2.jpg'); background-size: cover; height: 100vh;">
-        <div class="container text-center text-light bg-dark bg-opacity-75 p-5 rounded">
-            <h1 class="display-4 mb-4">About Us</h1>
-            <p class="lead">
-                At <strong>Ape Abroad</strong>, we are passionate about making travel simple, affordable, and unforgettable. We understand that planning a trip can be overwhelming, which is why we’re here to take the stress out of your journey. Our mission is to provide you with the tools and resources you need to explore the world with confidence.
-            </p>
-            <p class="lead">
-                We specialize in helping travelers like you find the <strong>best discounts</strong> for flights, accommodations, and activities. Whether you're looking for a cozy stay, exciting nearby attractions, or the best local food spots, we’ve got you covered. Our platform features <strong>verified reviews and ratings</strong> for just about anything you could ask for, so you can make informed decisions and enjoy every moment of your trip.
-            </p>
-            <p class="lead">
-                Let us help you focus on what truly matters—creating memories that last a lifetime. Start your adventure with <strong>Ape Abroad</strong> today!
-            </p>
-        </div>
-    </section>
-
-    <!-- Client Stories A carousel of reviews  -->
-    <section class="client-stories-section py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-4">Client Stories</h2>
-            <div id="clientCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- Review 1 -->
-                    <div class="carousel-item active">
-                        <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
-                            <div class="stars mb-3">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                            </div>
-                            <p class="lead">"Thanks to Ape Abroad, I saved a ton on my trip!
-                                 They found me incredible discounts on flights and accommodations, which made my vacation so much more affordable.
-                                 I couldn’t believe how easy it was to plan a budget-friendly trip without sacrificing quality."</p>
-                            <p class="text-muted">- Hugh Jackman</p>
-                        </div>
-                    </div>
-
-                    <!-- Review 2 -->
-                    <div class="carousel-item">
-                        <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
-                            <div class="stars mb-3">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                            </div>
-                            <p class="lead">"Ape Abroad made my trip unforgettable by suggesting amazing nearby activities.
-                                From hiking trails to local tours, they had everything covered.
-                                I didn’t have to waste time researching—everything was just a click away!"</p>
-                            <p class="text-muted">- Jackie Chan</p>
-                        </div>
-                    </div>
-
-                    <!-- Review 3 -->
-                    <div class="carousel-item">
-                        <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
-                            <div class="stars mb-3">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                            </div>
-                            <p class="lead">"The food recommendations from Ape Abroad were spot on!
-                                They guided me to the best local restaurants and hidden gems, and the reviews helped me choose the perfect spots.
-                                Every meal was a delicious adventure!"</p>
-                            <p class="text-muted">- Curious George</p>
-                        </div>
-                    </div>
-
-                    <!-- Review 4 -->
-                    <div class="carousel-item">
-                        <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
-                            <div class="stars mb-3">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                            </div>
-                            <p class="lead">"I loved how Ape Abroad included reviews and ratings for everything—hotels,
-                                activities, and even restaurants. It made decision-making so much easier,
-                                and I felt confident knowing other travelers had great experiences too."</p>
-                            <p class="text-muted">- Caesar</p>
-                        </div>
-                    </div>
-
-                    <!-- Review 5 -->
-                    <div class="carousel-item">
-                        <div class="card text-center p-4 mx-auto" style="max-width: 600px;">
-                            <div class="stars mb-3">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                            </div>
-                            <p class="lead">"The customer support team at Ape Abroad is fantastic!
-                                They were quick to answer all my questions and even helped me adjust my itinerary last minute.
-                                It’s rare to find such reliable and friendly service!"</p>
-                            <p class="text-muted">- Mr YoYo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carousel Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#clientCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#clientCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
-    <!-- Footer Containing Contact us, Socials, Copyright ect...-->
-    <footer class="bg-dark text-light py-4" id="contact-us">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-
-                <div class="p-4" style="background-color: #848884; border-radius: 10px; max-width: 400px;">
-                    <h5 class="fs-4">Contact Us</h5>
-                    <ul class="list-unstyled fs-5">
-                        <li>Email: <a href="#" class="text-light">contact@apeabroad.com</a></li>
-                        <li>Phone: +1 234 567 890</li>
-                        <li>Address: 123 Ape Abroad St, Jungle City</li>
-                    </ul>
-                </div>
-                <div class="p-4 text-end" style="background-color: #848884; border-radius: 10px; max-width: 400px;">
-                    <h5 class="fs-4">Follow Us</h5>
-                    <ul class="list-unstyled fs-5">
-                        <li>
-                            <a href="#" class="text-light">
-                                <i class="fab fa-facebook"></i> Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-light">
-                                <i class="fab fa-twitter"></i> Twitter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-light">
-                                <i class="fab fa-instagram"></i> Instagram
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-center mt-4 fs-5">
-                <p>&copy; 2025 Ape Abroad. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../JavaScript/HomePage.js"></script>
 </body>
 </html>
