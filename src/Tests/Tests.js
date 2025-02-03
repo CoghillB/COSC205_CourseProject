@@ -1,3 +1,5 @@
+// Six test cases strictly for the homepage.html
+
 window.onload = function () {
     const testResults = document.getElementById('testResults');
     testResults.innerHTML = '';
