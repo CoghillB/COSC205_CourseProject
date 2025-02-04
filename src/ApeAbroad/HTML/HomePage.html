@@ -42,8 +42,13 @@ NavBAr should stick to the top-->
 <!-- Stock Photo With Buttons (Gettin Started) and (About Us)
  This should take up the entire page dynamically,
  except you should be able to scroll down through the rest of the conent-->
-<section class="main-section d-flex justify-content-center align-items-center"
-         style="background-image: url('../Media/coverPhoto1.jpg'); background-size: cover; height: 100vh;">
+
+
+<!--<section class="main-section d-flex justify-content-center align-items-center"
+         style="background-image: url('../Media/coverPhoto1.jpg'); background-size: cover; height: 100vh;"> -->
+<section class="main-section cover-photo-1">
+
+
     <div class="text-center">
         <a href="Login.html" class="btn btn-primary btn-lg m-2 section">Get Started</a>
         <a href="#about-us" class="btn btn-primary btn-lg m-2 section">About Us</a>
@@ -188,9 +193,40 @@ NavBAr should stick to the top-->
 <!-- Footer Containing Contact us, Socials, Copyright ect...-->
 <footer class="bg-dark text-light py-4" id="contact-us">
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="footer-sections d-flex justify-content-between align-items-center">
+            <!-- Commented-out original code -->
+            <!-- <div class="p-4" style="background-color: #848884; border-radius: 10px; max-width: 400px;">
+                 <h5 class="fs-4">Contact Us</h5>
+                 <ul class="list-unstyled fs-5">
+                     <li>Email: <a href="#" class="text-light" id="contactUs">contact@apeabroad.com</a></li>
+                     <li>Phone: +1 234 567 890</li>
+                     <li>Address: 123 Ape Abroad St, Jungle City</li>
+                 </ul>
+             </div>
+             <div class="p-4 text-end" style="background-color: #848884; border-radius: 10px; max-width: 400px;"
+                  id="socials">
+                 <h5 class="fs-4">Follow Us</h5>
+                 <ul class="list-unstyled fs-5">
+                     <li>
+                         <a href="#" class="text-light">
+                             <i class="fab fa-facebook"></i> Facebook
+                         </a>
+                     </li>
+                     <li>
+                         <a href="#" class="text-light">
+                             <i class="fab fa-twitter"></i> Twitter
+                         </a>
+                     </li>
+                     <li>
+                         <a href="#" class="text-light">
+                             <i class="fab fa-instagram"></i> Instagram
+                         </a>
+                     </li>
+                 </ul>
+             </div> -->
 
-            <div class="p-4" style="background-color: #848884; border-radius: 10px; max-width: 400px;">
+            <!-- Refactored -->
+            <div class="footer-section">
                 <h5 class="fs-4">Contact Us</h5>
                 <ul class="list-unstyled fs-5">
                     <li>Email: <a href="#" class="text-light" id="contactUs">contact@apeabroad.com</a></li>
@@ -198,28 +234,16 @@ NavBAr should stick to the top-->
                     <li>Address: 123 Ape Abroad St, Jungle City</li>
                 </ul>
             </div>
-            <div class="p-4 text-end" style="background-color: #848884; border-radius: 10px; max-width: 400px;"
-                 id="socials">
+            <div class="footer-section">
                 <h5 class="fs-4">Follow Us</h5>
                 <ul class="list-unstyled fs-5">
-                    <li>
-                        <a href="#" class="text-light">
-                            <i class="fab fa-facebook"></i> Facebook
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-light">
-                            <i class="fab fa-twitter"></i> Twitter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-light">
-                            <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                    </li>
+                    <li><a href="#" class="text-light"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
                 </ul>
             </div>
         </div>
+
         <div class="text-center mt-4 fs-5">
             <p>&copy; 2025 Ape Abroad. All rights reserved.</p>
         </div>

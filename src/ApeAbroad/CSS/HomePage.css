@@ -12,7 +12,20 @@ section {
     margin: 0;
     padding: 0;
 }
-
+.cover-photo-1 {
+    background-image: url('../Media/coverPhoto1.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-section {
+    background-color: #848884;
+    border-radius: 10px;
+    max-width: 400px;
+    padding: 1rem;
+}
 .about-section {
     background-size: cover;
     background-position: center;
